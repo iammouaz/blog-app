@@ -14,23 +14,21 @@
  *= require_self
  */
 
-
-
 #users {
- display: flex;
- flex-direction: column;
- gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .flex {
- display: flex;
+  display: flex;
 }
 
 .info {
- justify-content: space-around;
- flex: 2;
+  justify-content: space-around;
+  flex: 2;
 }
 
 .info > span {
- align-items: flex-end;
+  align-items: flex-end;
 }
