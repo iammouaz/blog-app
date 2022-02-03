@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+<<<<<<< Updated upstream
   def index
     @users = User.all
   end
@@ -10,4 +11,9 @@ class ApplicationController < ActionController::Base
   def current_user
     User.first
   end
+=======
+    def current_user
+        User.first
+      end
+>>>>>>> Stashed changes
 end
