@@ -1,0 +1,11 @@
+
+<h1>Post details</h1>
+<div>
+  <h4><%= @post.title %> by <%= @post.user.name %></h4>
+  <p><%= @post.text %></p>
+  <span>Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></span>
+</div>
+<%= render partial: "comments/comment", collection: @comments %>
+<div>
+  <%= link_to "Back to post", [@user, :posts] %>
+</div>
