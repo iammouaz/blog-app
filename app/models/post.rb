@@ -1,10 +1,9 @@
 class Post < ApplicationRecord
-  belongs_to :author, class_name: 'User'
+  belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
   def recent_comments(id)
-    Comments.order('created_at Desc').limit(5)
     Comment.where(post_id: id).last(5)
   end
 

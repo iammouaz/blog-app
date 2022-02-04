@@ -1,0 +1,7 @@
+<div id="<%= dom_id user %>" class="flex user">
+  <img src=<%= user.photo %> alt="avatar">
+  <div class="flex info">
+    <strong><%= user.name %></strong>
+    <span class="flex counter">Number of posts: <%= user.posts_counter || 0 %></span>
+  </div>
+</div>

@@ -1,2 +1,15 @@
-<h1>User</h1>
-<p>Here all details about spacific user</p>
+<h1>User details</h1>
+<%= render @user %>
+<div class="bio">
+  <p>Bio:</p>
+  <p><%= @user.bio %></p>
+</div>
+
+<%= render partial: "posts/post", collection: @posts %>
+<%= link_to "See all posts from this user", [@user, :posts] %>
+
+<div>
+  <%= link_to "Back to users", users_path %> |
+  <span>Edit this user</span> |
+  <span>Destroy this user</span>
+</div>
