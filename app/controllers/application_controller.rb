@@ -1,11 +1,5 @@
 class ApplicationController < ActionController::Base
-  def index
-    @users = User.all
-  end
-
-  def show
-    @user = User.find(params[:id])
-  end
+  helper_method :current_user
 
   def current_user
     User.first
