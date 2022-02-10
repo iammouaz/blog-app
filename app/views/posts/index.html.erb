@@ -3,12 +3,15 @@
 <% @posts.each do |post| %>
   <%= render partial: "post", object: post %>
   <%= render partial: "comments/comment", collection: post.recent_comments %>
-  <%= link_to "Post details", [post.user, post] %>
+  <%= link_to "Post details", [post.user, post] %> |
+  <span>Edit this post</span> |
+  <span>Destroy this post</span>
 <% end %>
 </br>
 <button>Pagination</button>
 <div>
-  <%= link_to "Back to user", user_path(@user.id) %> |
-  <span>Edit this post</span> |
-  <span>Destroy this post</span>
+  <%= link_to "New post", [:new_user_post] %>
+</div>
+<div>
+  <%= link_to "Back to user info", user_path(@user.id) %>
 </div>

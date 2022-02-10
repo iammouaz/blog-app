@@ -6,8 +6,9 @@
 </div>
 
 <%= render partial: "posts/post", collection: @posts %>
-<%= link_to "See all posts from this user", [@user, :posts] %>
 
+</br>
+<%= link_to "See all posts from this user", [@user, :posts] %>
 <div>
   <%= link_to "Back to users", users_path %> |
   <span>Edit this user</span> |
