@@ -1,8 +1,7 @@
 <%= form_with model: [:user, @post] do |form| %>
   <% if post.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
+    <div class="red">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited to create this post:</h2>
       <ul>
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,17 +9,18 @@
       </ul>
     </div>
   <% end %>
-
   <div>
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
-
   <div>
     <%= form.label :text %>
     <%= form.text_area :text %>
   </div>
-
+  <% if @comments_counter.nil? && @likes_counter.nil? %>
+    <%= form.hidden_field :comments_counter, value: 0 %>
+    <%= form.hidden_field :likes_counter, value: 0 %>
+  <% end %>
   <div>
     <%= form.submit %>
   </div>
