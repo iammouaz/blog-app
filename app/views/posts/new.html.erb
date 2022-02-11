@@ -1,9 +1,9 @@
 <h1>New post</h1>
-
 <%= render "form", post: @post %>
-
+<% if flash[:alert] %>
+  <div class="red"><%= flash[:alert] %></div>
+<% end %>
 <br>
-
 <div>
   <%= link_to "Back to posts", user_posts_path %>
 </div>
