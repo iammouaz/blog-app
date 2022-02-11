@@ -1,15 +1,17 @@
 class Post < ApplicationRecord
+  validates :title, presence: true, length: { maximum: 250, too_long: 'Maximum of 250 characters' }
+  validates :comments_counter, :likes_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  def recent_comments(id)
-    Comment.where(post_id: id).last(5)
+  def recent_comments
+    comments.order(created_at: :desc).first(5)
   end
 
-  def update_counter(id)
-    user = User.find_by(id: id)
-    user.posts_counter = Post.where(user_id: id).count
+  def update_counter
+    user.posts_counter = 0 if user.posts_counter.nil?
+    user.posts_counter += 1
     user.save
   end
 end
