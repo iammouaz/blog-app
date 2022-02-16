@@ -7,9 +7,10 @@ class CommentsController < ApplicationController
       format.html do
         if @comment.save
           @comment.update_counter
-          format.html { redirect_to user_post_comments_path, notice: 'Comment was successfully created.' }
+          flash[:notice] = 'Comment was successfully created.'
+          redirect_to user_posts_path
         else
-          format.html { render :new, status: :unprocessable_entity }
+          flash[:alert] = 'Failed to create the comment.'
         end
       end
     end

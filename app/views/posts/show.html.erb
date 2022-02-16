@@ -10,6 +10,9 @@
 <%= form_with url: user_post_likes_path(@user.id, @post.id) do |f| %>
   <%= f.submit "Like" %>
 <% end %>
+<% if flash[:notice] %>
+  <div><%= flash[:notice] %></div>
+<% end %>
 <div>
   <%= link_to "Back to posts", [@user, :posts] %>
 </div>

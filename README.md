@@ -12,6 +12,10 @@ Rails >= 7.0.0
 
 Postgresql >= 12.0
 
+## Tests
+
+To run the tests you must first have run bundle install
+Then in the repository's main directory run bundle exec rspec spec
 
 ## Getting Started
 

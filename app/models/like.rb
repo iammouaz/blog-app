@@ -2,9 +2,9 @@ class Like < ApplicationRecord
   belongs_to :user
   belongs_to :post
 
-  def update_counter(id)
-    post = Post.find_by(id: id)
-    post.likes_counter = Like.where(post_id: id).count
+  def update_counter
+    post.likes_counter = 0 if post.likes_counter.nil?
+    post.likes_counter += 1
     post.save
   end
 end

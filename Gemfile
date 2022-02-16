@@ -9,8 +9,6 @@ gem 'rails', '~> 7.0.1'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
-gem 'rubocop', '>= 1.0', '< 2.0'
-
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
@@ -53,6 +51,8 @@ gem 'bootsnap', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -73,8 +73,4 @@ group :test do
   gem 'webdrivers'
 end
 
-group :development, :test do
-  gem 'rspec-rails', '~> 5.0.0'
-end
-
-gem 'rails-controller-testing'
+gem 'rubocop', '>= 1.0', '< 2.0'
