@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <%= javascript_importmap_tags %>
   </head>
-
+  <header>
+    <%= render "shared/nav" %>
+  </header>
   <body>
-    <%= link_to 'Logout', users_sign_out_path %> 
     <div>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>

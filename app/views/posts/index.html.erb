@@ -4,13 +4,13 @@
   <%= render partial: "post", object: post %>
   <%= render partial: "comments/comment", collection: post.recent_comments %>
   <%= link_to "Post details", [post.user, post] %> |
-  <span>Edit this post</span> |
-  <span>Destroy this post</span>
+  <span>Edit this post</span>
+  <%= button_to "| Delete this post", user_post_path(id: post.id), method: :delete if can? :destroy, post %>
 <% end %>
 </br>
 <button>Pagination</button>
 <div>
-  <%= link_to "New post", [:new_user_post] %>
+  <%= link_to "New Post", new_user_post_path if (can? :create, Post) && (@user.id == current_user.id) %>
 </div>
 <div>
   <%= link_to "Back to user info", user_path(@user.id) %>
