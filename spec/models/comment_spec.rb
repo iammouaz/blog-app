@@ -8,8 +8,8 @@ RSpec.describe Comment, type: :model do
     @user.save
     @post.save
   end
-  it 'check if update_counter from comment works' do
-    @comment.update_counter
+  it 'check if increase_counter from comment works' do
+    @comment.increase_counter
     expect(@post.comments_counter).to eq(2)
   end
 end

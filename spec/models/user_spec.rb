@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before(:each) { @user = User.new(name: 'John', posts_counter: 0) }
+  before(:each) do
+    @user = User.new(name: 'John', photo: 'https://i.pravatar.cc/200?img=3', bio: 'john bio', posts_counter: 0,
+                     email: 'john@mail.com', password: 'pass123')
+    @user.skip_confirmation!
+    @user.save
+  end
   describe 'check if name' do
     it 'is valid' do
       expect(@user).to be_valid
