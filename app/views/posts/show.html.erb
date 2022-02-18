@@ -2,13 +2,18 @@
 <div>
   <h4><%= @post.title %> by <%= @post.user.name %></h4>
   <p><%= @post.text %></p>
-  <span>Comments: <%= @post.comments_counter || 0 %>, Likes: <%= @post.likes_counter || 0 %></span>
+  <span>Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></span>
 </div>
-<%= render partial: "comments/comment", collection: @comments %>
+<% @comments.each do |comment| %>
+  <%= render comment %>
+  <% if can? :destroy, comment %>
+    <%= button_to "Delete comment", user_post_comment_path(comment.user_id, comment.post_id, comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %>
 </br>
 <%= link_to "Create new comment", new_user_post_comment_path(@user.id, @post.id) %>
 <%= form_with url: user_post_likes_path(@user.id, @post.id) do |f| %>
-  <%= f.submit "Like" %>
+  <%= f.submit "Like this post" %>
 <% end %>
 <% if flash[:notice] %>
   <div><%= flash[:notice] %></div>

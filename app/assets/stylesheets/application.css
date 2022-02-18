@@ -36,3 +36,14 @@
 .red {
   color: red;
 }
+
+header {
+  padding: 0 4px 8px 4px !important;
+}
+
+nav {
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 4px 0 !important;
+}

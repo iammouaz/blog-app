@@ -9,9 +9,16 @@ class Post < ApplicationRecord
     comments.order(created_at: :desc).first(5)
   end
 
-  def update_counter
+  def increase_counter
     user.posts_counter = 0 if user.posts_counter.nil?
     user.posts_counter += 1
+    user.save
+  end
+
+  def decrease_counter
+    return if user.posts_counter <= 0 || user.posts_counter.nil?
+
+    user.posts_counter -= 1
     user.save
   end
 end

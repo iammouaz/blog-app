@@ -1,0 +1,8 @@
+<nav class="flex">
+  <% if user_signed_in? %>
+    <%= current_user.name %>
+    <%= link_to 'Logout', users_sign_out_path %> 
+  <% else %>
+    <span>Guest</span>
+  <% end %>
+</nav>
