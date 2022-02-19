@@ -5,7 +5,9 @@
   <%= render partial: "comments/comment", collection: post.recent_comments %>
   <%= link_to "Post details", [post.user, post] %> |
   <span>Edit this post</span>
-  <%= button_to "| Delete this post", user_post_path(id: post.id), method: :delete if can? :destroy, post %>
+  <% if can? :destroy, post %>
+    | <%= button_to "Delete this post", user_post_path(id: post.id), method: :delete if can? :destroy, post %>
+  <% end %>
 <% end %>
 </br>
 <button>Pagination</button>
