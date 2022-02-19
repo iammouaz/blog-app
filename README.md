@@ -17,6 +17,42 @@ Postgresql >= 12.0
 To run the tests you must first have run bundle install
 Then in the repository's main directory run bundle exec rspec spec
 
+
+<details>
+<summary>Quick guide how to test the API</summary>
+Sign-up:
+
+```
+curl -XPOST -H "Content-Type: application/json" -d '{ "user": { "name": "John", "photo": "https://i.pravatar.cc/200?img=3", "bio": "some bio", "posts_counter": "0", "email": "test@example.com", "password": "12345678" } }' http://localhost:3000/users
+```
+Click the link in the terminal to confirm the registration, and then sign in:
+
+```
+curl -XPOST -i -H "Content-Type: application/json" -d '{ "user": { "email": "test@example.com", "password": "12345678" } }' http://localhost:3000/users/sign_in
+```
+Replace the Authorization: Bearer `token` with {{{your token}}} for the next steps below:
+Create a new post:
+
+```
+curl -XPOST -H "Authorization: Bearer {{{your_token}}}" -H "Content-Type: application/json" -d '{ "post": { "title": "New Post", "text": "This a post created from the API", "comments_counter": "0", "likes_counter": "0"} }' http://localhost:3000/api/posts
+```
+Get all the posts:
+
+```
+curl -XGET -H "Authorization: Bearer  {{{your_token}}}" -H "Content-Type: application/json" http://localhost:3000/api/posts
+```
+Add a comment:
+
+```
+curl -XPOST -H "Authorization: Bearer {{{your_token}}}" -H "Content-Type: application/json" -d '{ "comment": { "text": "new comment from API"} }' http://localhost:3000/api/posts/1/comments
+```
+Get all comments:
+
+```
+curl -XGET -H "Authorization: Bearer {{{your_token}}}" -H "Content-Type: application/json" http://localhost:3000/api/posts/1/comments
+```
+</details>
+
 ## Getting Started
 
 - Run git clone on this project at the desired directory:
