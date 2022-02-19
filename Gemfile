@@ -73,6 +73,8 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+gem 'devise-jwt'
+gem 'rack-cors'
 
 gem 'cancancan'
 gem 'devise'
